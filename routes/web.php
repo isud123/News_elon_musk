@@ -16,9 +16,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 //project
-Route::get('/news', function () {
-    return view('news');
-})->name('news');
+use App\Http\Controllers\NewsController;
+
+Route::get('/news', [NewsController::class, 'index']);
 
 Route::get('/news/{id}', function ($id) {
     // Query from the database
